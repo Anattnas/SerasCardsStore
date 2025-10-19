@@ -1,0 +1,13 @@
+Tuviste que agregar en OpcionesLogin.kt la clase actualizarInfoBD() porque no tenias bien hecho el
+hashMap y no obtenias el valor tiempo del usuario, lo que quedaba vacio y la app al llamar ese valor
+daba null por vacio y se crasheaba la app.
+
+Ahora al ingresar con un usuario nuevo hace lo que el if, llama a llenar datos que ahora si esta bien y si
+es un usuario ya registrado osea no es nuevo, actualiza sus datos de la bd
+
+Email de prueba es:
+
+santana@gmail.com
+123456789
+
+---------------RECUERDA QUE TU MAINACTIVITY ES MENUTCG!!!------------------

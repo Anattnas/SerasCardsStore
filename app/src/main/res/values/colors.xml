@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="btn_color">#03A9F4</color> <!-- azul claro para los botones -->
+    <color name="bg_color">#E0F7FA</color> <!-- Esto crea un color llamado bg_color un azul muy claro que podremos usar en el tema-->
+    <color name="bg_celeste">#E1F5FE</color> <!-- Celeste muy suave (ligeramente azuloso) que podremos usar en el tema-->
+    <color name="bg_gris">#F5F5F5</color> <!-- Gris muy claro, neutro y elegante que podremos usar en el tema-->
+    <color name="bg_celeste_palido">#E0F7FA</color> <!-- Celeste pálido, un poquito más frío que podremos usar en el tema-->
+</resources>

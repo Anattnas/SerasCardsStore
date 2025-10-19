@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Mis_Menus.DigiMain">
+
+    <ImageButton
+        android:id="@+id/BtnBackDigi00"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/retroceso"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/Txt_BtnBackDigi00"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"/>
+
+    <!-- Este FrameLayout será el espacio donde se cambinaran los fragmentos. -->
+    <FrameLayout
+        android:id="@+id/DigiFragmentContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/BtnBackDigi00"
+        app:layout_constraintBottom_toTopOf="@+id/BottomDigiNV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/BottomDigiNV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/windowBackground"
+        app:menu="@menu/menu_digi_main"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:elevation="8dp"
+        app:itemIconTint="@null"/> <!-- No funciona siguen oscuros los iconos de la barra de navegacion-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--
+    Explicación:
+    android:id="@+id/btnBack" → Le damos un identificador para referirlo desde Kotlin.
+    android:src="@drawable/retroceso" → La imagen que se mostrará en el botón.
+    background="?attr/selectableItemBackgroundBorderless" → Hace que el botón tenga efecto visual al presionarlo, sin fondo cuadrado.
+    contentDescription → Texto accesible, útil para lectores de pantalla.
+    layout_constraintTop_toTopOf="parent" y layout_constraintStart_toStartOf="parent" → Coloca el botón en la esquina superior izquierda del ConstraintLayout.
+    layout_marginTop y layout_marginStart → Pequeño margen desde los bordes.
+
+    -->

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Mis_Menus.MenuTCG">
+
+    <!-- Aqui va el titulo -->
+
+    <TextView
+        android:id="@+id/TituloMenuTCG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SELECIONE UN TCG PLAY"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/comic_jungle_extrude"/> <!-- Aquí enlazas tu fuente personalizada -->
+
+    <!--
+    //////////////////////////////////////////////////
+     Contenedor horizontal para las opciones de TCG
+    /////////////////////////////////////////////////
+    -->
+
+    <LinearLayout
+        android:id="@+id/BarraOpciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_below="@id/TituloMenuTCG"
+        android:layout_marginTop="30dp">
+
+        <!-- Botón para DigitCG -->
+        <ImageButton
+            android:id="@+id/btnDigit"
+            android:layout_width="192dp"
+            android:layout_height="100dp"
+            android:src="@drawable/digi"
+            android:background="@null"
+            android:contentDescription="Digit TCG"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Botón para YugiTCG -->
+        <ImageButton
+            android:id="@+id/btnYugi"
+            android:layout_width="192dp"
+            android:layout_height="100dp"
+            android:src="@drawable/yugi"
+            android:background="@null"
+            android:contentDescription="Yugi TCG"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Botón para PokeTCG -->
+        <ImageButton
+            android:id="@+id/btnPoke"
+            android:layout_width="192dp"
+            android:layout_height="100dp"
+            android:src="@drawable/poke"
+            android:background="@null"
+            android:contentDescription="Poke TCG"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Botón para MagicTCG -->
+        <ImageButton
+            android:id="@+id/btnMagic"
+            android:layout_width="192dp"
+            android:layout_height="140dp"
+            android:src="@drawable/magic"
+            android:background="@null"
+            android:contentDescription="Magic TCG"
+            android:layout_marginBottom="20dp"/>
+    </LinearLayout>
+
+</RelativeLayout>
+
+<!--
+Explicación línea por línea:
+
+android:id="@+id/TituloMenuTCG" → Nos permite referenciar este TextView desde Kotlin si necesitamos.
+android:layout_width="wrap_content" → Ajusta el ancho al texto que contiene.
+android:layout_height="wrap_content" → Ajusta la altura al contenido del texto.
+android:text="Seleccione un TCG Play" → El texto que se mostrará como título.
+android:textSize="22sp" → Tamaño del texto.
+android:textStyle="bold" → Pone el texto en negrita.
+android:layout_centerHorizontal="true" → Centra horizontalmente el texto en la pantalla.
+android:layout_alignParentTop="true" → Lo pega a la parte superior del layout.
+android:layout_marginTop="20dp" → Separación del borde superior para que no quede pegado.
+android:fontFamily="@font/comic_jungle_extrude"/> Aquí enlazas tu fuente personalizada
+-->

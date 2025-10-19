@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/Item_digiInicio"
+        android:icon="@drawable/inicio"
+        android:title="Inicio" />
+
+    <item
+        android:id="@+id/Item_digiCarrito"
+        android:icon="@drawable/ic_carrito"
+        android:title="Carrito" />
+
+    <item
+        android:id="@+id/Item_digiVender"
+        android:icon="@drawable/vender"
+        android:title="Vender" />
+
+    <item
+        android:id="@+id/Item_digiPerfil"
+        android:icon="@drawable/perfil"
+        android:title="Perfil" />
+
+    <item
+        android:id="@+id/Item_digiFavoritos"
+        android:icon="@drawable/favorito"
+        android:title="Favoritos" />
+
+</menu>

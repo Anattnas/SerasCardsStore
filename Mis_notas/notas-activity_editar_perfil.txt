@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>  // declaración XML
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"  // namespace principal de Android
+    xmlns:app="http://schemas.android.com/apk/res-auto"  // namespace para atributos de librerías
+    xmlns:tools="http://schemas.android.com/tools"  // namespace para herramientas de diseño
+    android:id="@+id/main"  // id principal del layout
+    android:layout_width="match_parent"  // ancho completo de pantalla
+    android:layout_height="match_parent"  // alto completo de pantalla
+    android:padding="18dp"  // padding general
+    tools:context=".EditarPerfil">  // indica que se asocia a la clase EditarPerfil
+
+    <RelativeLayout
+        android:layout_width="match_parent"  // ancho completo
+        android:layout_height="wrap_content">  // alto ajustado al contenido
+
+        <TextView
+            android:id="@+id/Txt_editar_p"  // id del texto "Editar perfil"
+            android:text="@string/Txt_editar_perfil"  // texto del string
+            android:gravity="center"  // centrado horizontal
+            android:textSize="20sp"  // tamaño de texto
+            android:textStyle="bold"  // texto en negritas
+            android:layout_marginTop="15dp"  // margen superior
+            android:layout_width="match_parent"  // ancho completo
+            android:layout_height="wrap_content"/>  // altura ajustada al contenido
+
+        <!--Imagen de perfil-->
+        <RelativeLayout
+            android:id="@+id/perfilRL"  // contenedor de la imagen de perfil
+            android:layout_below="@+id/Txt_editar_p"  // debajo del TextView "Editar perfil"
+            android:layout_marginTop="15dp"  // margen superior
+            android:layout_centerHorizontal="true"  // centrado horizontal
+            android:layout_width="120dp"  // ancho fijo
+            android:layout_height="120dp">  // alto fijo
+
+            <ImageView
+                android:id="@+id/img_perfil"  // imagen del perfil
+                android:src="@drawable/img_perfil"  // imagen por defecto
+                android:scaleType="centerCrop"  // recorte centrado
+                android:layout_width="120dp"  // ancho fijo
+                android:layout_height="120dp"/>  // alto fijo
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/FABCambiarImg"  // botón flotante para cambiar imagen
+                android:layout_alignParentEnd="true"  // alineado a la derecha
+                app:fabSize="mini"  // tamaño mini
+                android:src="@drawable/ic_selec_imagen"  // icono del FAB
+                android:layout_width="wrap_content"  // ancho ajustado
+                android:layout_height="wrap_content"/>  // alto ajustado
+
+        </RelativeLayout>
+
+        <!--Nombres-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/TILNombres"  // contenedor para el EditText de nombres
+            android:layout_width="match_parent"  // ancho completo
+            android:layout_height="wrap_content"  // alto ajustado
+            android:layout_below="@+id/perfilRL"  // debajo de la imagen
+            android:layout_marginTop="10dp"  // margen superior
+            app:boxCornerRadiusTopStart="8dp"  // esquina superior izquierda redondeada
+            app:boxCornerRadiusBottomEnd="8dp"  // esquina inferior derecha redondeada
+            app:boxCornerRadiusTopEnd="8dp"  // esquina superior derecha redondeada
+            app:boxCornerRadiusBottomStart="8dp">  // esquina inferior izquierda redondeada
+
+            <EditText
+                android:id="@+id/Et_nombres"  // campo de texto para nombres
+                android:hint="@string/Et_nombres"  // hint del campo
+                android:inputType="textPersonName"  // tipo de entrada
+                android:layout_width="match_parent"  // ancho completo
+                android:layout_height="wrap_content"/>  // alto ajustado
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Fecha de nacimiento-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/TIL_Nac"  // contenedor para fecha de nacimiento
+            android:layout_width="match_parent"  // ancho completo
+            android:layout_height="wrap_content"  // alto ajustado
+            android:layout_below="@+id/TILNombres"  // debajo del campo nombres
+            android:layout_marginTop="10dp"  // margen superior
+            app:boxCornerRadiusTopStart="8dp"  // esquinas redondeadas
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp">
+
+            <EditText
+                android:id="@+id/Et_f_nac"  // campo de texto para fecha
+                android:hint="@string/Et_f_nac"  // hint
+                android:layout_width="match_parent"  // ancho completo
+                android:layout_height="wrap_content"/>  // alto ajustado
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Codigo de pais + numero telefonico-->
+        <RelativeLayout
+            android:id="@+id/RL_Cod_Tel"  // contenedor para código de país y teléfono
+            android:layout_below="@+id/TIL_Nac"  // debajo de fecha
+            android:layout_marginTop="10dp"  // margen superior
+            android:layout_width="match_parent"  // ancho completo
+            android:layout_height="wrap_content">  // alto ajustado
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/selectorCod"  // selector de código de país
+                android:gravity="center"  // centrado
+                app:ccp_rememberLastSelection="true"  // recuerda última selección
+                android:layout_width="wrap_content"  // ancho ajustado
+                android:layout_height="wrap_content"/>  // alto ajustado
+
+            <!--Numero telefonico-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"  // ancho completo
+                android:layout_height="wrap_content"  // alto ajustado
+                android:layout_toEndOf="@+id/selectorCod"  // al lado del selector de país
+                android:layout_marginTop="10dp"  // margen superior
+                app:boxCornerRadiusTopStart="8dp"  // esquinas redondeadas
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp">
+
+                <EditText
+                    android:id="@+id/Et_telefono"  // campo de texto para teléfono
+                    android:hint="@string/Et_telefono"  // hint
+                    android:inputType="number"  // tipo numérico
+                    android:layout_width="match_parent"  // ancho completo
+                    android:layout_height="wrap_content"/>  // alto ajustado
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/Btn_actualizar"  // botón actualizar
+            android:text="@string/Btn_actualizar"  // texto del botón
+            android:textAllCaps="true"  // texto en mayúsculas
+            android:layout_centerInParent="true"  // centrado en el RelativeLayout padre
+            android:layout_below="@+id/RL_Cod_Tel"  // debajo del contenedor de teléfono
+            android:layout_marginTop="15dp"  // margen superior
+            app:icon="@drawable/ic_editar"  // icono del botón
+            android:layout_width="200dp"  // ancho fijo
+            android:layout_height="@dimen/m_button_height"/>  // alto fijo
+
+    </RelativeLayout>
+</RelativeLayout>

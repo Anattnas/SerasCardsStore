@@ -1,0 +1,80 @@
+<resources>
+    <string name="app_name">Seras Cards Store</string>
+
+    <string name="default_web_client_id">841721783025-igvlhd5sj897nl8bpl80gl91quiticip.apps.googleusercontent.com</string>
+
+    <string name="Item_Inicio">Inicio</string>
+    <string name="Item_Chats">Carrito</string>
+    <string name="Item_vender">Publicar</string>
+    <string name="Item_Mis_Anuncios">Galeria</string>
+    <string name="Item_Cuenta">Perfil</string>
+
+    <string name="TituloRL">Titulo</string>
+
+    <string name="Ingresar_email">Ingresar con email</string>
+    <string name="Ingresar_google">Ingresar con google</string>
+
+    <string name="Txt_login">Login de Usuario</string>
+    <string name="Et_email">Email</string>
+    <string name="Et_password">Password</string>
+    <string name="Btn_ingresar">Ingresar</string>
+    <string name="Txt_no_cuenta">No tienes una cuenta?</string>
+    <string name="Txt_registrarme">REGISTRARME</string>
+
+    <string name="Txt_registro">Registro de Usuario</string>
+    <string name="Et_r_password">Repetir Contraseña</string>
+    <string name="Btn_registrar">Registrar</string>
+
+    <!-- Perfil de usuario -->
+    <string name="Txt_perfil">PERFIL DE USUARIO</string>
+    <string name="Txt_informacion">Informacion:</string>
+    <string name="Txt_nombres">Nombres:</string>
+    <string name="Tv_nombres">Nombres completos</string>
+    <string name="Txt_email">Email:</string>
+    <string name="Tv_email">email@dominio.com</string>
+    <string name="Txt_nacimiento">Fecha de nac:</string>
+    <string name="Tv_nacimiento">DD/MM/AAAA</string>
+    <string name="Txt_miembro">Miembro desde:</string>
+    <string name="Tv_miembro">DD/MM/AAAA</string>
+    <string name="Txt_telefono">Telefono:</string>
+    <string name="Tv_telefono">0123456789</string>
+    <string name="Txt_estado_cuenta">Estado de cuenta:</string>
+    <string name="Tv_estado_cuenta">No verificado</string>
+
+    <string name="TxtOpciones">Opciones</string>
+    <string name="Btn_editar_perfil">Editar perfil</string>
+    <string name="Btn_cerrar_sesion">Cerrar Sesion</string>
+
+    <!-- Editar perfil -->
+    <string name="Txt_editar_perfil">Editar perfil</string>
+    <string name="Et_nombres">Nombres completos</string>
+    <string name="Et_f_nac">Fecha de nac.</string>
+    <string name="Cod_tef"> +00 </string>
+    <string name="Et_telefono">Telefono</string>
+    <string name="Btn_actualizar">Actualizar</string>
+
+    <!-- Botones de retroceso -->
+    <string name="Txt_Back">Atrás</string>
+    <string name="Txt_BtnBackDigi00">Botón de retroceso</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
+
+    <!--
+
+Poner este código en strings.xml sirve para centralizar todos los textos de la aplicación,
+en lugar de escribirlos directamente en los layouts. Esto tiene varias ventajas:
+
+Mantenimiento más fácil:
+    Si quieres cambiar un texto (por ejemplo "Perfil de Usuario" a "Mi Perfil"), solo lo cambias en strings.xml y
+    se actualizará en toda la app.
+Soporte para múltiples idiomas (localización):
+    Puedes crear otros archivos strings.xml para distintos idiomas (values-es/strings.xml, values-en/strings.xml) y
+    la app mostrará automáticamente el texto correcto según el idioma del dispositivo.
+Reutilización:
+    Puedes usar un mismo texto en varios lugares de la app sin repetirlo.
+Separación de diseño y contenido:
+    Mantiene los layouts más limpios y facilita la lectura del XML del diseño.
+
+-->

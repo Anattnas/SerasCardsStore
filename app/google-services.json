@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "841721783025",
+    "firebase_url": "https://seras-cards-store-default-rtdb.firebaseio.com",
+    "project_id": "seras-cards-store",
+    "storage_bucket": "seras-cards-store.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:841721783025:android:92aa2c5bdbbe1491cb3f50",
+        "android_client_info": {
+          "package_name": "com.example.serascardsstore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "841721783025-6c0sv90qnpgil6prpv9mdmd8v0j6kjue.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.serascardsstore",
+            "certificate_hash": "ee24f0ac5de56a74b7713294838ac595a45e819d"
+          }
+        },
+        {
+          "client_id": "841721783025-igvlhd5sj897nl8bpl80gl91quiticip.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3Nkde9LwYboF22XMHQosio3kzkd1SXWE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "841721783025-igvlhd5sj897nl8bpl80gl91quiticip.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

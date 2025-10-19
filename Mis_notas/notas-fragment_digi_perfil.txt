@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>                             🔹 Declaración XML estándar con codificación UTF-8
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"   🔹 Contenedor que permite desplazamiento vertical
+    xmlns:tools="http://schemas.android.com/tools"                      🔹 Espacio de nombres para herramientas de Android Studio
+    xmlns:app="http://schemas.android.com/apk/res-auto"                 🔹 Espacio de nombres para atributos personalizados de Material Design
+    android:layout_width="match_parent"                                 🔹 El ancho ocupa todo el padre
+    android:layout_height="match_parent"                                🔹 La altura ocupa todo el padre
+    android:padding="15dp"                                              🔹 Margen interior de 15dp en todo el contenido
+    tools:context=".Mis_Menus.Fragments.FragmentDigiPerfil">            🔹 Define el fragmento asociado para vista previa
+
+    <RelativeLayout                                                     🔹 Layout base donde se posicionan los elementos relativos entre sí
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--Titulo PERFIL-->
+        <TextView
+            android:id="@+id/Txt_perfil"                               🔹 ID del título principal del perfil
+            android:text="@string/Txt_perfil"                          🔹 Texto obtenido del archivo strings.xml
+            android:gravity="center"                                   🔹 Centra el texto horizontalmente
+            android:textSize="20sp"                                    🔹 Tamaño de texto de 20sp
+            android:layout_marginTop="15dp"                            🔹 Margen superior de 15dp
+            android:layout_width="match_parent"                        🔹 Ancho igual al contenedor padre
+            android:layout_height="wrap_content"                       🔹 Altura se ajusta al contenido
+            android:fontFamily="@font/comic_jungle_extrude"/>          🔹 Usa fuente personalizada
+
+        <!--Imagen del perfil-->
+        <ImageView
+            android:id="@+id/Tv_perfil"                                🔹 ID de la imagen del perfil
+            android:layout_below="@+id/Txt_perfil"                     🔹 Se coloca debajo del título
+            android:layout_width="120dp"                               🔹 Ancho de 120dp
+            android:layout_height="120dp"                              🔹 Alto de 120dp
+            android:src="@drawable/img_perfil"                         🔹 Imagen mostrada por defecto
+            android:layout_centerHorizontal="true"                     🔹 Centra horizontalmente
+            android:layout_marginTop="18dp"                            🔹 Margen superior de 18dp
+            android:scaleType="centerCrop"/>                           🔹 Escala la imagen centrada y recortada
+
+        <TextView
+            android:id="@+id/Txt_informacion"                          🔹 Etiqueta “Información”
+            android:text="@string/Txt_informacion"
+            android:layout_below="@+id/Tv_perfil"                      🔹 Se ubica debajo de la imagen
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"                                   🔹 Texto en negrita
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!--Nombres-->
+        <TextView
+            android:id="@+id/Txt_nombres"                              🔹 Texto del campo “Nombres”
+            android:text="@string/Txt_nombres"
+            android:layout_below="@+id/Txt_informacion"
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/Tv_nombres"                               🔹 Muestra el nombre del usuario
+            android:text="@string/Tv_nombres"
+            android:layout_below="@+id/Txt_informacion"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentEnd="true"                       🔹 Alineado al extremo derecho
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!--Email-->
+        <TextView
+            android:id="@+id/Txt_email"                                🔹 Texto de etiqueta “Email”
+            android:text="@string/Txt_email"
+            android:layout_below="@+id/Txt_nombres"
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/Tv_email"                                 🔹 Valor del correo electrónico
+            android:text="@string/Tv_email"
+            android:layout_below="@+id/Txt_nombres"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!--Fecha de nacimiento-->
+        <TextView
+            android:id="@+id/Txt_nacimiento"                           🔹 Etiqueta “Fecha de nacimiento”
+            android:text="@string/Txt_nacimiento"
+            android:layout_below="@+id/Txt_email"
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/Tv_nacimiento"                            🔹 Valor de la fecha de nacimiento
+            android:text="@string/Tv_nacimiento"
+            android:layout_below="@+id/Txt_email"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!--Miembro desde-->
+        <TextView
+            android:id="@+id/Txt_miembro"                              🔹 Texto “Miembro desde”
+            android:text="@string/Txt_miembro"
+            android:layout_below="@+id/Txt_nacimiento"
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/Tv_miembro"                               🔹 Valor de la fecha de registro
+            android:text="@string/Tv_miembro"
+            android:layout_below="@+id/Txt_nacimiento"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!--Telefono-->
+        <TextView
+            android:id="@+id/Txt_telefono"                             🔹 Texto “Teléfono”
+            android:text="@string/Txt_telefono"
+            android:layout_below="@+id/Txt_miembro"
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/Tv_telefono"                              🔹 Número telefónico mostrado
+            android:text="@string/Tv_telefono"
+            android:layout_below="@+id/Txt_miembro"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!--Estado de la cuenta-->
+        <TextView
+            android:id="@+id/Txt_estado_cuenta"                        🔹 Texto “Estado de cuenta”
+            android:text="@string/Txt_estado_cuenta"
+            android:layout_below="@+id/Txt_telefono"
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/Tv_estado_cuenta"                         🔹 Valor del estado actual (activo/inactivo)
+            android:text="@string/Tv_estado_cuenta"
+            android:layout_below="@+id/Txt_telefono"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/TxtOpciones"                              🔹 Subtítulo “Opciones”
+            android:text="@string/TxtOpciones"
+            android:layout_below="@+id/Txt_estado_cuenta"
+            android:layout_marginTop="15dp"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!--Boton editar Perfil-->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/Btn_editar_perfil"                        🔹 Botón para editar la información del perfil
+            android:text="@string/Btn_editar_perfil"
+            android:layout_below="@+id/TxtOpciones"
+            android:textAllCaps="true"                                 🔹 Texto en mayúsculas
+            app:icon="@drawable/ic_editar"                             🔹 Ícono de lápiz (editar)
+            android:layout_centerInParent="true"
+            android:layout_width="200dp"
+            android:layout_height="@dimen/m_button_height"/>

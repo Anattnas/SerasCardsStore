@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.SerasCardsStore" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <!--Modificacion de fondo-->
+        <item name="android:windowBackground">@color/bg_gris</item>
+
+        <!--Modificacion de botones-->
+        <item name="colorPrimary">@color/btn_color</item> <!-- azul claro global para botones y elementos primarios -->
+        <item name="colorPrimaryVariant">@color/btn_color</item> <!-- variante primaria -->
+        <item name="colorSecondary">@color/btn_color</item> <!-- color secundario para otros elementos -->
+        <item name="materialButtonStyle">@style/Widget.Material3.Button</item> <!-- asegura estilo Material3 para botones -->
+    </style>
+
+    <style name="Theme.SerasCardsStore" parent="Base.Theme.SerasCardsStore" />
+</resources>
