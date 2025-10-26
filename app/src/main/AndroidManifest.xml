@@ -2,7 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />                   <!-- Permite que la app acceda a la cámara del dispositivo -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />   <!-- Permite que la app escriba en el almacenamiento externo, necesario para guardar fotos tomadas -->
 
     <application
         android:allowBackup="true"
@@ -40,3 +46,16 @@
     </application>
 
 </manifest>
+
+<!-- COMENTARIOS PERSONALES
+
+Cuando haces click en “Add uses-feature tag”, Android Studio agrega algo como esto en tu AndroidManifest.xml:
+
+<uses-feature android:name="android.hardware.camera" android:required="true" />
+
+Qué significa cada parte:
+android:name="android.hardware.camera" → Indica que tu app hace uso de la cámara del dispositivo.
+android:required="true" → Significa que la app requiere obligatoriamente una cámara para funcionar.
+Si pones false, la app puede instalarse en dispositivos sin cámara, pero obviamente la funcionalidad de la cámara no estará disponible.
+
+-->

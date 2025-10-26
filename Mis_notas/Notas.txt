@@ -11,3 +11,19 @@ santana@gmail.com
 123456789
 
 ---------------RECUERDA QUE TU MAINACTIVITY ES MENUTCG!!!------------------
+
+---- PARA ACTUALIZAR GITHUB CADA VEZ QUE AGREGUES COSAS ----
+Tu proyecto Seras Cards Store ya está subido correctamente a tu repositorio de GitHub:
+👉 https://github.com/Anattnas/SerasCardsStore
+hora Git te deja listo para seguir trabajando
+A partir de ahora, cuando hagas cambios en tu proyecto y quieras subirlos a GitHub, solo necesitas tres comandos:
+
+git add .
+git commit -m "Descripción breve del cambio"
+git push
+
+Se recomienda hacerlo uno por uno, para poder revisar y confirmar cada paso:
+
+git add .                                           → Esto añade todos los cambios al “staging area” (prepara los archivos para el commit).
+git commit -m "Mensaje describiendo los cambios"    → Aquí guardas los cambios en tu repositorio local con un mensaje que describa lo que hiciste.
+git push                                            → Esto envía los cambios al repositorio remoto en GitHub.
