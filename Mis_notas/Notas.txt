@@ -18,10 +18,6 @@ Tu proyecto Seras Cards Store ya está subido correctamente a tu repositorio de 
 hora Git te deja listo para seguir trabajando
 A partir de ahora, cuando hagas cambios en tu proyecto y quieras subirlos a GitHub, solo necesitas tres comandos:
 
-git add .
-git commit -m "Descripción breve del cambio"
-git push
-
 Se recomienda hacerlo uno por uno, para poder revisar y confirmar cada paso:
 
 git add .                                           → Esto añade todos los cambios al “staging area” (prepara los archivos para el commit).

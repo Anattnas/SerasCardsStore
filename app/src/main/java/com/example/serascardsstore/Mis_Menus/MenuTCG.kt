@@ -12,12 +12,14 @@ import com.example.serascardsstore.R
 import com.example.serascardsstore.databinding.ActivityMainBinding
 import com.example.serascardsstore.databinding.ActivityMenuTcgBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.storage.FirebaseStorage
 
 class MenuTCG : AppCompatActivity() {
     // Variable para manejar el binding de la vista principal (conecta el XML con el código Kotlin)
     private lateinit var binding: ActivityMenuTcgBinding
     // Variable para la autenticacion con Firebase
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var firebaseStorage: FirebaseStorage
 
     // ------------------------------------------------------------------ \\
 

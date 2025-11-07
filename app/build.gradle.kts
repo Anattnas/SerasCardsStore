@@ -94,6 +94,7 @@ dependencies {
     implementation(libs.firebaseDatabase)          // Firebase Realtime Database
     implementation(libs.loginGoogle)               // dependencia para login con Google
     implementation(libs.glide)                     // Agrega la librería Glide al proyecto para poder usarla en el código de la app.
+    implementation(libs.firebaseStorage)           // Agrega la dependencia Firebase Storage al proyecto
     implementation(libs.ccp)                       // Agrega la librería Country Code Picker (CCP) al proyecto para poder usarla en el módulo actual
     testImplementation(libs.junit)                 // JUnit para pruebas unitarias
     // Se borro/comento la siguiente linea:

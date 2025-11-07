@@ -3,7 +3,6 @@
 # Esto permite centralizar las versiones para que si necesitamos actualizar alguna, solo
 # cambiemos aquí y automáticamente se reflejará en todas las referencias.
 #------------------------------------------
-
 [versions]
 agp = "8.12.1"
 kotlin = "2.0.21"
@@ -16,15 +15,12 @@ material = "1.12.0"
 activity = "1.10.1"
 constraintlayout = "2.2.1"
 googleServicesversion="4.4.3"
-#------------------------------------------
-# Versiones específicas agregadas para Firebase
-# Estas se usan para la autenticación de usuarios y la base de datos en tiempo real
-#------------------------------------------
 firebaseAuthV = "24.0.1"      # Versión de Firebase Authentication
 firebaseDatabaseV = "22.0.0"  # Versión de Firebase Realtime Database
 loginGoogleV="21.4.0"
 glideV="5.0.5"                # Guarda la versión de Glide para mantener el control de versiones en un solo lugar.
 ccpV="2.7.0"                  # Define la versión de la librería Country Code Picker, para que puedas referenciarla fácilmente más adelante
+firebaseStorageV = "22.0.1"   # Define la versión del componente Firebase Cloud Storage (aquí la 22.0.1)
 
 # Con googleServicesversion="4.4.3" defines una versión global con el nombre googleServicesversion.
 # Así, si en algún momento actualizas de 4.4.3 a 4.4.4, solo cambias aquí y se actualizará en todos los lugares donde se use.
@@ -52,6 +48,7 @@ firebaseDatabase = { group = "com.google.firebase", name = "firebase-database", 
 loginGoogle = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "loginGoogleV" }
 glide={ group = "com.github.bumptech.glide", name = "glide", version.ref = "glideV" } #Declara la librería Glide usando la versión definida arriba.
 ccp = {group = "com.hbb20", name = "ccp", version.ref = "ccpV" } # Crea una referencia a la librería CCP usando el grupo, nombre y versión definida antes
+firebaseStorage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "firebaseStorageV" } # Declara la dependencia Firebase Storage usando el grupo, nombre y la versión definida arriba
 
 #------------------------------------------
 # [plugins] define los plugins de Gradle que se usarán en el proyecto
