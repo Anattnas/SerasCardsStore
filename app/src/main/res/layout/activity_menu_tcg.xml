@@ -23,11 +23,20 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/comic_jungle_extrude"/> <!-- Aquí enlazas tu fuente personalizada -->
 
-    <!--
-    //////////////////////////////////////////////////
-     Contenedor horizontal para las opciones de TCG
-    /////////////////////////////////////////////////
-    -->
+    <!-- Botón del menú hamburguesa -->
+    <ImageButton
+        android:id="@+id/btnMenuHamburguesa"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_menu"
+        android:background="@android:color/transparent"
+        android:contentDescription="Menú principal"
+        android:layout_alignTop="@id/TituloMenuTCG"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp" />
+
+
+    <!-- Contenedor horizontal para las opciones de TCG -->
 
     <LinearLayout
         android:id="@+id/BarraOpciones"

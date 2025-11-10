@@ -7,6 +7,7 @@ plugins {
     // id("com.google.gms.google-services") version "4.4.3" apply false
 // Modificamos la linea anterior linea 7 por la siguiente:
     alias(libs.plugins.googleService) apply false
+    alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin) apply false
 }
 
 /*

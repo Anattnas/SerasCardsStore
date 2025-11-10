@@ -8,7 +8,8 @@ plugins {
 // Add the Google services Gradle plugin
     //id("com.google.gms.google-services")
 // Se modifico la linea anterior por:
-    alias(libs.plugins.googleService)      // Plugin de Google Services para integrar Firebase
+    alias(libs.plugins.googleService)
+    alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)      // Plugin de Google Services para integrar Firebase
 }
 
 /*
@@ -96,11 +97,16 @@ dependencies {
     implementation(libs.glide)                     // Agrega la librería Glide al proyecto para poder usarla en el código de la app.
     implementation(libs.firebaseStorage)           // Agrega la dependencia Firebase Storage al proyecto
     implementation(libs.ccp)                       // Agrega la librería Country Code Picker (CCP) al proyecto para poder usarla en el módulo actual
+    implementation(libs.google.maps)               // Dependencia para mostrar mapas de Google dentro de la app
+    implementation(libs.google.location)           // Dependencia para obtener y manejar la ubicación del dispositivo (GPS)
+
     testImplementation(libs.junit)                 // JUnit para pruebas unitarias
+
     // Se borro/comento la siguiente linea:
     // implementation("com.google.firebase:firebase-analytics") // Cuando se usa BoM, no es necesario especificar versiones en dependencias de Firebase
 
     // Librerías para pruebas instrumentadas (UI)
     androidTestImplementation(libs.androidx.junit)         // Extensión de JUnit para pruebas instrumentadas
     androidTestImplementation(libs.androidx.espresso.core) // Espresso para pruebas de UI
+
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Opción del menú para abrir la ubicación -->
+    <item
+        android:id="@+id/opcion_ubicacion"
+        android:title="Ubicación" />
+    <!--android:icon="@drawable/ic_location" Puedes usar un ícono de ubicación si lo tienes -->
+
+    <!-- Nueva opción de menú para contacto -->
+    <item
+        android:id="@+id/opcion_contacto"
+        android:title="Contacto" />
+    <!--android:icon="@drawable/ic_contact" Si tienes un ícono, lo puedes agregar aquí -->
+</menu>

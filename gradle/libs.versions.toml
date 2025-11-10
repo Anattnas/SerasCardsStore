@@ -21,16 +21,18 @@ loginGoogleV="21.4.0"
 glideV="5.0.5"                # Guarda la versión de Glide para mantener el control de versiones en un solo lugar.
 ccpV="2.7.0"                  # Define la versión de la librería Country Code Picker, para que puedas referenciarla fácilmente más adelante
 firebaseStorageV = "22.0.1"   # Define la versión del componente Firebase Cloud Storage (aquí la 22.0.1)
+google-maps = "18.2.0"        # Define la versión del SDK de Google Maps que se usará en el proyecto
+google-location = "21.0.1"
+googleAndroidLibrariesMapsplatformSecretsGradlePlugin = "2.0.1"    # Define la versión del servicio de ubicación de Google (para acceder a coordenadas, GPS, etc.)
 
 # Con googleServicesversion="4.4.3" defines una versión global con el nombre googleServicesversion.
 # Así, si en algún momento actualizas de 4.4.3 a 4.4.4, solo cambias aquí y se actualizará en todos los lugares donde se use.
 # Evita que tengas versiones duplicadas/regadas en varios archivos Gradle.
+#------------------------------------------
 
-#------------------------------------------
-# [libraries] define las librerías que usamos en el proyecto.
-# Cada entrada indica: grupo (group), nombre (name) y versión (version.ref)
-# La versión se toma de la sección [versions] usando version.ref.
-#------------------------------------------
+# [libraries] define las librerías que usamos en el proyecto. Cada entrada indica:
+# grupo (group), nombre (name) y versión (version.ref). La versión se toma de la sección [versions] usando version.ref.
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -40,24 +42,22 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
-#------------------------------------------
 # Librerías de Firebase agregadas como parte del proyecto de registro de usuarios
-#------------------------------------------
 firebaseAuth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuthV" }
 firebaseDatabase = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabaseV" }
 loginGoogle = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "loginGoogleV" }
 glide={ group = "com.github.bumptech.glide", name = "glide", version.ref = "glideV" } #Declara la librería Glide usando la versión definida arriba.
 ccp = {group = "com.hbb20", name = "ccp", version.ref = "ccpV" } # Crea una referencia a la librería CCP usando el grupo, nombre y versión definida antes
 firebaseStorage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "firebaseStorageV" } # Declara la dependencia Firebase Storage usando el grupo, nombre y la versión definida arriba
+google-maps = { module = "com.google.android.gms:play-services-maps", version.ref = "google-maps" } # Declara la dependencia del SDK de Google Maps y usa la versión definida arriba
+google-location = { module = "com.google.android.gms:play-services-location", version.ref = "google-location" } # Declara la dependencia del servicio de ubicación de Google y usa la versión definida arriba
 
-#------------------------------------------
-# [plugins] define los plugins de Gradle que se usarán en el proyecto
-# Cada plugin tiene un id (identificador) y la versión que se tomará de [versions]
-#------------------------------------------
+# [plugins] define los plugins de Gradle que se usarán en el proyecto. Cada plugin tiene un id (identificador) y la versión que se tomará de [versions]
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 googleService = { id = "com.google.gms.google-services", version.ref ="googleServicesversion" }
+google-android-libraries-mapsplatform-secrets-gradle-plugin = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "googleAndroidLibrariesMapsplatformSecretsGradlePlugin" }
 
 # Estás declarando un plugin de Gradle con el id: com.google.gms.google-services.
 # Ese plugin es el que permite que tu app Android se conecte con Firebase Services (lee tu google-services.json y configura automáticamente las dependencias de Firebase).
