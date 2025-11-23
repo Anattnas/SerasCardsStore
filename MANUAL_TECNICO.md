@@ -141,3 +141,5 @@ Queda fuera del alcance:
 - Documentación oficial de [Android Studio](https://developer.android.com/studio)
 - [Firebase Authentication](https://firebase.google.com/docs/auth)
 - [Material Design Guidelines](https://material.io/design)
+
+<!-- Commit de prueba 2 -->
