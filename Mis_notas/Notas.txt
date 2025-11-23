@@ -6,7 +6,7 @@ Ahora al ingresar con un usuario nuevo hace lo que el if, llama a llenar datos q
 es un usuario ya registrado osea no es nuevo, actualiza sus datos de la bd
 
 Email de prueba es:
-
+santana1@gmail.com
 santana@gmail.com
 123456789
 

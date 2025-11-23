@@ -44,10 +44,61 @@ class EditarPerfil : AppCompatActivity() {  // Clase principal de la actividad E
 
         cargarInfo()                                                      // Llama a la función que cargará la información del usuario desde Firebase
 
+        binding.BtnActualizar.setOnClickListener {
+            validarInfo()
+        }
+
         binding.FABCambiarImg.setOnClickListener {
             selec_imagen_de()
         }
     }
+    private var nombres = ""
+    private var f_nac = ""
+    private var codigo = ""
+    private var telefono = ""
+
+    private fun validarInfo() {
+        nombres = binding.EtNombres.text.toString().trim()
+        f_nac = binding.EtFNac.text.toString().trim()
+        codigo = binding.selectorCod.selectedCountryCodeWithPlus
+        telefono = binding.EtTelefono.text.toString().trim()
+
+        if (nombres.isEmpty()){
+            Toast.makeText(this, "Ingrese sus nombres", Toast.LENGTH_SHORT).show()
+        }else if (f_nac.isEmpty()){
+            Toast.makeText(this, "Ingrese su fecha de nacimiento", Toast.LENGTH_SHORT).show()
+        }else if (codigo.isEmpty()){
+            Toast.makeText(this, "Seleccione un codigo", Toast.LENGTH_SHORT).show()
+        }else if (telefono.isEmpty()){
+            Toast.makeText(this, "Ingrese su numero de telefono", Toast.LENGTH_SHORT).show()
+        }else{
+            actualizarInfo()
+        }
+    }
+
+    private fun actualizarInfo(){
+        progressDialog.setMessage("Actualizando Informacion")
+        progressDialog.show()
+
+        val hashMap = HashMap<String, Any>()
+        hashMap["nombres"] = "${nombres}"
+        hashMap["fecha_nac"] = "${f_nac}"
+        hashMap["codigoTelefono"] = "${codigo}"
+        hashMap["telefono"] = "${telefono}"
+
+        val ref = FirebaseDatabase.getInstance().getReference("Usuarios")
+        ref.child(firebaseAuth.uid!!)
+            .updateChildren(hashMap)
+            .addOnSuccessListener {
+                progressDialog.dismiss()
+                Toast.makeText(this, "Informacion Actualizada", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { e ->
+                progressDialog.dismiss()
+                Toast.makeText(this, "${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
     // Función que obtiene los datos del usuario desde Firebase y los muestra en los campos de la pantalla Editar Perfil en tiempo real
     private fun cargarInfo() {                                                             // Función para obtener los datos del usuario desde Firebase y mostrarlos en pantalla
         val ref = FirebaseDatabase.getInstance().getReference("Usuarios")           // Referencia a la rama "Usuarios" de la base de datos
@@ -66,10 +117,12 @@ class EditarPerfil : AppCompatActivity() {  // Clase principal de la actividad E
                     binding.EtTelefono.setText(telefono)                    // Muestra el teléfono sin el código
 
                     try {
-                        Glide.with(applicationContext)                      // Usa Glide para manejar carga de imágenes
-                            .load(imagen)                           // Carga la imagen desde la URL obtenida
-                            .placeholder(R.drawable.img_perfil) // Imagen por defecto si no hay foto disponible
-                            .into(binding.imgPerfil)                 // Coloca la imagen en el ImageView del perfil
+                        if (!this@EditarPerfil.isDestroyed && !this@EditarPerfil.isFinishing) {     // Verifica que la Activity siga activa (no destruida ni a punto de cerrarse) antes de cargar la imagen
+                            Glide.with(this@EditarPerfil)                                  // Usa Glide con el contexto de la Activity (correcto para cargar imágenes en sus vistas)
+                                .load(imagen)                                               // Carga la imagen desde la URL obtenida
+                                .placeholder(R.drawable.img_perfil)                     // Imagen por defecto si no hay foto disponible
+                                .into(binding.imgPerfil)                                     // Coloca la imagen en el ImageView del perfil
+                        }
                     } catch (e: Exception) {
                         // Muestra error si Glide falla
                         Toast.makeText(this@EditarPerfil, "${e.message}", Toast.LENGTH_SHORT).show()
@@ -94,21 +147,47 @@ class EditarPerfil : AppCompatActivity() {  // Clase principal de la actividad E
         progressDialog.setMessage("Subiendo imagen de Storage") // Muestra un mensaje al usuario mientras se sube la imagen
         progressDialog.show() // Abre el cuadro de diálogo de progreso para indicar que el proceso está en curso
 
-        val rutaImagen = "imagenesPerfil/" + firebaseAuth.uid // Esta línea define la ruta (carpeta) en el Storage donde se guardará la imagen del usuario.
-        val storageReference = FirebaseStorage.getInstance().getReference(rutaImagen) // Obtiene una referencia al lugar donde se almacenará la imagen en Firebase Storage
-        storageReference.putFile(imageUri!!)               // Sube el archivo de imagen (la URI seleccionada previamente) a la ruta definida
-            .addOnSuccessListener { taskSnapshot ->             // Se ejecuta si la subida fue exitosa
-                val uriTask = taskSnapshot.storage.downloadUrl  // Obtiene el enlace público (URL de descarga) de la imagen subida
-                while (!uriTask.isSuccessful);                  // Espera a que la tarea termine de generar el enlace
-                val urlImagenCargada = "${uriTask.result}"      // Guarda el enlace de la imagen como cadena
-                if (uriTask.isSuccessful){                      // Verifica que la tarea terminó correctamente
-                    actualizarImagenBD(urlImagenCargada)        // Llama a otra función que actualizará la URL de la imagen en la base de datos del usuario
+        // Detectar con que metodo inicio sesion el usuario
+        val provider = firebaseAuth.currentUser?.providerData?.get(1)?.providerId
+
+        // val rutaImagen = "imagenesPerfil/" + firebaseAuth.uid  // Esta línea define la ruta (carpeta) en el Storage donde se guardará la imagen del usuario.
+
+        // Elegir carpeta según el proveedor de acceso
+        val rutaImagen = if (provider == "google.com") {
+            "imagenesPerfilG/${firebaseAuth.uid}"
+        } else {
+            "imagenesPerfilC/${firebaseAuth.uid}"
+        }
+        // val storageReference = FirebaseStorage.getInstance().getReference(rutaImagen) // Obtiene una referencia al lugar donde se almacenará la imagen en Firebase Storage
+
+        // Crear referencia al Storage
+        val storage = FirebaseStorage.getInstance().reference
+
+        // Crear carpeta según el proveedor
+        val carpetaRef = if (provider == "google.com") {
+            storage.child("imagenesPerfilG")
+        } else {
+            storage.child("imagenesPerfilC")
+        }
+
+        // Crear nombre único de imagen
+        val nombreImagen = firebaseAuth.uid + ".jpg"
+        val imagenRef = carpetaRef.child(nombreImagen)
+        // storageReference.putFile(imageUri!!)               // Sube el archivo de imagen (la URI seleccionada previamente) a la ruta definida
+            imagenRef.putFile(imageUri!!)
+                .addOnSuccessListener {
+                    imagenRef.downloadUrl.addOnSuccessListener { uri ->
+                        val urlImagenCargada = uri.toString()
+                        actualizarImagenBD(urlImagenCargada)
+                    }.addOnFailureListener { e ->
+                        progressDialog.dismiss()
+                        Toast.makeText(this, "Error al obtener URL: ${e.message}", Toast.LENGTH_SHORT).show()
+                    }
                 }
-            }
-            .addOnFailureListener { e ->                        // Se ejecuta si ocurre un error durante la subida
-                progressDialog.dismiss()                        // Cierra el cuadro de diálogo de progreso
-                Toast.makeText(this, "${e.message}", Toast.LENGTH_SHORT).show() // Muestra un mensaje con el error
-            }
+                .addOnFailureListener { e ->
+                    progressDialog.dismiss()
+                    Toast.makeText(this, "Error al subir imagen: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
     }
     // Función que actualiza la URL de la imagen del usuario en la base de datos
     private fun EditarPerfil.actualizarImagenBD(urlImagenCargada: String) {
@@ -226,10 +305,10 @@ class EditarPerfil : AppCompatActivity() {  // Clase principal de la actividad E
             imageUri = data!!.data                 // Guardar la URI de la imagen seleccionada en la variable imageUri
             subirImagenStorage()                   // Llamamos a la funcoon subirImagenStorage()
           /*try {                                                     // Intentamos mostrar la imagen usando Glide
-                Glide.with(this)                             // Contexto de la actividad
+                Glide.with(this)                                      // Contexto de la actividad
                     .load(imageUri)                                   // Cargar la imagen desde la URI
-                    .placeholder(R.drawable.img_perfil)   // Imagen temporal mientras carga
-                    .into(binding.imgPerfil)                   // Mostrar la imagen en el ImageView del perfil
+                    .placeholder(R.drawable.img_perfil)               // Imagen temporal mientras carga
+                    .into(binding.imgPerfil)                          // Mostrar la imagen en el ImageView del perfil
             } catch (e: Exception) {                                  // Capturar cualquier error al cargar la imagen
             }*/
         } else { // Si el usuario canceló la selección se muestra el mensaje de cancelación

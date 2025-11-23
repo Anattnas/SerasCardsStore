@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.serascardsstore.Anuncios.CrearAnuncio
 import com.example.serascardsstore.Mis_Menus.Fragments.FragmentDigiInicio
 import com.example.serascardsstore.Mis_Menus.Fragments.FragmentDigiCarrito
 import com.example.serascardsstore.Mis_Menus.Fragments.FragmentDigiVender
@@ -15,12 +16,21 @@ import com.example.serascardsstore.Mis_Menus.Fragments.FragmentDigiFavoritos
 import com.example.serascardsstore.Mis_Menus.Fragments.FragmentDigiPerfil
 import com.example.serascardsstore.Mis_Menus.MenuTCG
 import com.example.serascardsstore.R
+import com.example.serascardsstore.databinding.ActivityDigiMainBinding
+import com.example.serascardsstore.databinding.ActivityMenuTcgBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.storage.FirebaseStorage
 
 class DigiMain : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
+    private lateinit var binding: ActivityDigiMainBinding    // Variable para manejar el binding de la vista principal (conecta el XML con el código Kotlin)
+    private lateinit var firebaseAuth: FirebaseAuth         // Variable para la autenticacion con Firebase
+    private lateinit var firebaseStorage: FirebaseStorage   // Variable para la autenticacion con Firebase
+
+    override fun onCreate(savedInstanceState: Bundle?) {    // Metodo principal que se ejecuta al crear la actividad
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_digi_main)
+        binding = ActivityDigiMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // Ajustes de ventana para padding automático
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -29,7 +39,6 @@ class DigiMain : AppCompatActivity() {
             insets
         }
 
-        // --------------------------------------------------------------- //
         // Referencia al botón
         val backButton = findViewById<ImageButton>(R.id.BtnBackDigi00)
         // -----------------------------
@@ -39,10 +48,7 @@ class DigiMain : AppCompatActivity() {
             startActivity(intent)
             finish() // opcional, para que al presionar "Atrás" no regrese aquí
         }
-        // --------------------------------------------------------------- //
 
-
-        // --------------------------------------------------------------- //
         // Mostrar fragmento inicial (Inicio)
         verFragment(FragmentDigiInicio())
         // Configurar BottomNavigationView
@@ -73,15 +79,18 @@ class DigiMain : AppCompatActivity() {
                 else -> false
             }
         }
+
+        //binding.FAB.setOnClickListener {
+            //startActivity(Intent(this, CrearAnuncio::class.java))
+        //}
     }
 
-    // Función para cambiar fragmentos dinámicamente
-    // ----------------------------------------------
-    private fun verFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.DigiFragmentContainer, fragment)
-            .commit()
-    }
+        // Función para cambiar fragmentos dinámicamente
+        private fun verFragment(fragment: Fragment) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.DigiFragmentContainer, fragment)
+                .commit()
+        }
 }
 
 

@@ -81,12 +81,15 @@ class FragmentDigiPerfil : Fragment() {
                     binding.TvTelefono.text = cod_tel                                      // asigna teléfono completo
                     binding.TvMiembro.text = for_tiempo                                    // asigna fecha de registro formateada
 
-                    try {
-                        Glide.with(mContext)                                            // inicia Glide con contexto del fragment
-                            .load(imagen)                                       // carga la imagen desde URL
-                            .placeholder(R.drawable.img_perfil)             // imagen temporal mientras carga
-                            .into(binding.TvPerfil)                              // asigna imagen al ImageView
-                    }catch (e: Exception){                                              // captura errores al cargar la imagen
+                    try {                                                       // Intentar ejecutar el bloque seguro para la carga de imagen
+                        val activity = activity                                 // Obtener la Activity asociada al fragment (puede ser null)
+                        if (activity != null && !activity.isDestroyed && !activity.isFinishing) {   // Comprobar que la Activity existe y no está en proceso de cierre
+                            Glide.with(activity)                                // Iniciar Glide ligado al ciclo de vida de la Activity segura
+                                .load(imagen)                                   // Indicar la URL/URI de la imagen a cargar
+                                .placeholder(R.drawable.img_perfil)             // Mostrar un recurso temporal mientras carga la imagen
+                                .into(binding.TvPerfil)                         // Colocar la imagen resultante en el ImageView correspondiente
+                        }
+                    }catch (e: Exception){                                                 // captura errores al cargar la imagen
                         Toast.makeText(mContext, "${e.message}", Toast.LENGTH_SHORT).show() // muestra mensaje de error
                     }
 
