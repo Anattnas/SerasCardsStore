@@ -179,3 +179,5 @@ Esta sección documenta las versiones del proyecto y el estado de los Objetos de
 **Notas:**
 - Cada cambio registrado debe estar soportado por evidencia en Git (commit, tag, PR).
 - Las versiones del documento se correlacionan con la línea base de software LB-X.Y para trazabilidad completa.
+
+<!-- Commit de prueba 1 -->
