@@ -53,24 +53,28 @@ class MenuTCG : AppCompatActivity() {
         val digitButton = findViewById<ImageButton>(R.id.btnDigit)
         digitButton.setOnClickListener {   // Listener para abrir DigiMain
             val intent = Intent(this@MenuTCG, DigiMain::class.java)
+            intent.putExtra("nodoTCG", "digipublicaciones")
             startActivity(intent)
         }
         // Referencia al botón YugiTCG
         val yugiButton = findViewById<ImageButton>(R.id.btnYugi)
         yugiButton.setOnClickListener {   // Listener para abrir DigiMain
             val intent = Intent(this@MenuTCG, DigiMain::class.java)
+            intent.putExtra("nodoTCG", "yugipublicaciones")
             startActivity(intent)
         }
         // Referencia al botón pokeTCG
         val pokeButton = findViewById<ImageButton>(R.id.btnPoke)
         pokeButton.setOnClickListener {   // Listener para abrir DigiMain
             val intent = Intent(this@MenuTCG, DigiMain::class.java)
+            intent.putExtra("nodoTCG", "pokepublicaciones")
             startActivity(intent)
         }
         // Referencia al botón magicTCG
         val magicButton = findViewById<ImageButton>(R.id.btnMagic)
         magicButton.setOnClickListener {   // Listener para abrir DigiMain
             val intent = Intent(this@MenuTCG, DigiMain::class.java)
+            intent.putExtra("nodoTCG", "magicpublicaciones")
             startActivity(intent)
         }
 

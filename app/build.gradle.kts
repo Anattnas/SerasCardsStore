@@ -5,6 +5,8 @@
 plugins {
     alias(libs.plugins.android.application) // Plugin principal de Android para compilar apps
     alias(libs.plugins.kotlin.android)      // Plugin para usar Kotlin en Android
+    id("kotlin-parcelize") // PLUGIN NECESARIO PARA @Parcelize
+
 // Add the Google services Gradle plugin
     //id("com.google.gms.google-services")
 // Se modifico la linea anterior por:

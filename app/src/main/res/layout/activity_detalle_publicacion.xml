@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <!-- ViewPager para mostrar las 3 imágenes -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerImagenes"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"/>
+
+    <!-- Nombre
+    <TextView
+        android:id="@+id/tvDetalleNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="12dp"/> -->
+
+    <!-- Precio
+    <TextView
+        android:id="@+id/tvDetallePrecio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$0"/> -->
+
+    <!-- TCG
+    <TextView
+        android:id="@+id/tvDetalleTcg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TCG"/> -->
+
+    <!-- Condición
+    <TextView
+        android:id="@+id/tvDetalleCondicion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Condición"/> -->
+
+    <!-- Descripción
+    <TextView
+        android:id="@+id/tvDetalleDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Descripción"
+        android:layout_marginTop="8dp"/> -->
+
+</LinearLayout>

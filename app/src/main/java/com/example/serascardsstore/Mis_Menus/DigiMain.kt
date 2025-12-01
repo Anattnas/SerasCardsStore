@@ -32,6 +32,10 @@ class DigiMain : AppCompatActivity() {
         binding = ActivityDigiMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Recibe el nodo a mostrar desde MenuTCG
+        val nodoSeleccionado = intent.getStringExtra("nodoTCG") ?: "digipublicaciones"
+
+
         // Ajustes de ventana para padding automático
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -49,15 +53,18 @@ class DigiMain : AppCompatActivity() {
             finish() // opcional, para que al presionar "Atrás" no regrese aquí
         }
 
-        // Mostrar fragmento inicial (Inicio)
-        verFragment(FragmentDigiInicio())
+        // Mostrar fragmento inicial (Inicio) con el nodo seleccionado
+        //verFragment(FragmentDigiInicio.newInstance(nodoSeleccionado, ""))
+        verFragment(FragmentDigiInicio.newInstance(nodoSeleccionado))
+
         // Configurar BottomNavigationView
         val bottomNav = findViewById<BottomNavigationView>(R.id.BottomDigiNV)
 
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.Item_digiInicio -> {
-                    verFragment(FragmentDigiInicio())
+                    //verFragment(FragmentDigiInicio.newInstance(nodoSeleccionado, ""))
+                    verFragment(FragmentDigiInicio.newInstance(nodoSeleccionado))
                     true
                 }
                 R.id.Item_digiCarrito -> {
