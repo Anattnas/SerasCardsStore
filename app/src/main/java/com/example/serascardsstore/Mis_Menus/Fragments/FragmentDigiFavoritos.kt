@@ -49,7 +49,8 @@ class FragmentDigiFavoritos : Fragment() {
         adaptador = AdaptadorPublicacion(
             requireContext(),
             listaFavoritos,
-            false   // NO mostrar botones en Favoritos
+            "FAVORITOS",
+            "MisFavoritos",  // Nodo de Firebase para eliminar favoritos
         ) { publicacion ->
             // Luego abrimos el detalle
 

@@ -80,11 +80,39 @@
                     android:layout_marginTop="-55dp"
                     android:background="@android:color/transparent"
                     android:contentDescription="Eliminar favorito"
-                    android:src="@drawable/ic_eliminar"
+                    android:src="@drawable/ic_eliminarf"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    android:padding="0dp"/>
+                    android:padding="0dp"
+                    android:visibility="gone"/>
 
+                <ImageButton
+                    android:id="@+id/btnEliminarCompra"
+                    android:layout_width="25dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="199dp"
+                    android:layout_marginTop="-55dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Eliminar compra"
+                    android:src="@drawable/ic_eliminarc"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:padding="0dp"
+                    android:visibility="gone"/>
+
+                <ImageButton
+                    android:id="@+id/btnEliminarInicio"
+                    android:layout_width="25dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="150dp"
+                    android:layout_marginTop="-55dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Eliminar Inicio"
+                    android:src="@drawable/ic_eliminari"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:padding="0dp"
+                    android:visibility="gone"/>
 
             </LinearLayout>
 

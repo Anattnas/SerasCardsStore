@@ -18,7 +18,8 @@ import androidx.appcompat.app.AlertDialog
 class AdaptadorPublicacion(
     private val context: Context,
     private val publicaciones: ArrayList<ModeloPublicacion>,
-    private val mostrarBotones: Boolean,
+    private val tipoFragmento: String, // "INICIO", "FAVORITOS", "CARRITO"
+    private val nodoFirebase: String,     // digipublicaciones / yugipublicaciones / etc
     private val listener: (ModeloPublicacion) -> Unit
 
 ) : RecyclerView.Adapter<AdaptadorPublicacion.Holder>() {
@@ -36,14 +37,32 @@ class AdaptadorPublicacion(
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val publicacion = publicaciones[position]
 
-        if (!mostrarBotones) {
-            binding.btnFavorito.visibility = View.GONE
-            binding.btnCarrito.visibility = View.GONE
-            binding.checkPublicacion.visibility = View.GONE
-            binding.btnEliminarFavoritos.visibility = View.VISIBLE
-        } else {
-            binding.btnEliminarFavoritos.visibility = View.GONE
+        // OCULTAR TODOS PRIMERO
+        binding.btnFavorito.visibility = View.GONE
+        binding.btnCarrito.visibility = View.GONE
+        binding.checkPublicacion.visibility = View.GONE
+        binding.btnEliminarFavoritos.visibility = View.GONE
+        binding.btnEliminarCompra.visibility = View.GONE
+        binding.btnEliminarInicio.visibility = View.GONE
+
+        when (tipoFragmento) {
+
+            "INICIO" -> {
+                binding.btnFavorito.visibility = View.VISIBLE
+                binding.btnCarrito.visibility = View.VISIBLE
+                binding.checkPublicacion.visibility = View.VISIBLE
+                binding.btnEliminarInicio.visibility = View.VISIBLE
+            }
+
+            "FAVORITOS" -> {
+                binding.btnEliminarFavoritos.visibility = View.VISIBLE
+            }
+
+            "CARRITO" -> {
+                binding.btnEliminarCompra.visibility = View.VISIBLE
+            }
         }
+
 
         binding.tvNombre.text = publicacion.nombre
         binding.tvPrecio.text = "$${publicacion.precio}"
@@ -98,42 +117,107 @@ class AdaptadorPublicacion(
             }
         }
 
-        // BOTÓN ELIMINAR DE FAVORITOS (SOLO EN FRAGMENTO FAVORITOS)
-        if (!mostrarBotones) {
-            binding.btnEliminarFavoritos.visibility = View.VISIBLE
+        // === CONFIGURAR VISIBILIDAD Y LISTENERS DE BOTONES SEGÚN FRAGMENTO ===
 
-            binding.btnEliminarFavoritos.setOnClickListener {
-                val uid = firebaseAuth.uid ?: return@setOnClickListener
+        // Ocultar todos primero
+        binding.btnFavorito.visibility = View.GONE
+        binding.btnCarrito.visibility = View.GONE
+        binding.checkPublicacion.visibility = View.GONE
+        binding.btnEliminarFavoritos.visibility = View.GONE
+        binding.btnEliminarCompra.visibility = View.GONE
+        binding.btnEliminarInicio.visibility = View.GONE
 
-                AlertDialog.Builder(context)
-                    .setTitle("Eliminar de favoritos")
-                    .setMessage("¿Deseas eliminar esta publicación de tus favoritos?")
-                    .setPositiveButton("Sí") { _, _ ->
+        when (tipoFragmento.uppercase()) {
 
-                        val refEliminar = database
-                            .child("MisFavoritos")
-                            .child(uid)
-                            .child(publicacion.id)
+            "INICIO" -> {
+                binding.btnFavorito.visibility = View.VISIBLE
+                binding.btnCarrito.visibility = View.VISIBLE
+                binding.checkPublicacion.visibility = View.VISIBLE
+                binding.btnEliminarInicio.visibility = View.VISIBLE
 
-                        refEliminar.removeValue()
-                            .addOnSuccessListener {
-                                Toast.makeText(context, "Eliminado de favoritos", Toast.LENGTH_SHORT).show()
-
-                                val pos = holder.adapterPosition
-                                if (pos != RecyclerView.NO_POSITION) {
-                                    publicaciones.removeAt(pos)
-                                    notifyItemRemoved(pos)
+                binding.btnEliminarInicio.setOnClickListener {
+                    AlertDialog.Builder(context)
+                        .setTitle("Eliminar publicación")
+                        .setMessage("¿Deseas eliminar esta publicación del sistema?")
+                        .setPositiveButton("Sí") { _, _ ->
+                            val refEliminar = database.child(nodoFirebase).child(publicacion.id)
+                            refEliminar.removeValue()
+                                .addOnSuccessListener {
+                                    Toast.makeText(context, "Publicación eliminada", Toast.LENGTH_SHORT).show()
+                                    val pos = holder.adapterPosition
+                                    if (pos != RecyclerView.NO_POSITION) {
+                                        publicaciones.removeAt(pos)
+                                        notifyItemRemoved(pos)
+                                    }
                                 }
+                                .addOnFailureListener {
+                                    Toast.makeText(context, "Error al eliminar", Toast.LENGTH_SHORT).show()
+                                }
+                        }
+                        .setNegativeButton("Cancelar", null)
+                        .show()
+                }
 
-                            }
-                            .addOnFailureListener {
-                                Toast.makeText(context, "Error al eliminar", Toast.LENGTH_SHORT).show()
-                            }
-                    }
-                    .setNegativeButton("Cancelar", null)
-                    .show()
+            }
+
+            "FAVORITOS" -> {
+                binding.btnEliminarFavoritos.visibility = View.VISIBLE
+
+                binding.btnEliminarFavoritos.setOnClickListener {
+                    val uid = firebaseAuth.uid ?: return@setOnClickListener
+                    AlertDialog.Builder(context)
+                        .setTitle("Eliminar de favoritos")
+                        .setMessage("¿Deseas eliminar esta publicación de tus favoritos?")
+                        .setPositiveButton("Sí") { _, _ ->
+                            val refEliminar = database.child("MisFavoritos").child(uid).child(publicacion.id)
+                            refEliminar.removeValue()
+                                .addOnSuccessListener {
+                                    Toast.makeText(context, "Eliminado de favoritos", Toast.LENGTH_SHORT).show()
+                                    val pos = holder.adapterPosition
+                                    if (pos != RecyclerView.NO_POSITION) {
+                                        publicaciones.removeAt(pos)
+                                        notifyItemRemoved(pos)
+                                    }
+                                }
+                                .addOnFailureListener {
+                                    Toast.makeText(context, "Error al eliminar", Toast.LENGTH_SHORT).show()
+                                }
+                        }
+                        .setNegativeButton("Cancelar", null)
+                        .show()
+                }
+            }
+
+            "CARRITO" -> {
+                binding.btnEliminarCompra.visibility = View.VISIBLE
+
+                binding.btnEliminarCompra.setOnClickListener {
+                    val uid = firebaseAuth.uid ?: return@setOnClickListener
+                    AlertDialog.Builder(context)
+                        .setTitle("Eliminar del carrito")
+                        .setMessage("¿Deseas eliminar esta publicación de tu carrito?")
+                        .setPositiveButton("Sí") { _, _ ->
+                            val refEliminar = database.child("MisCompras").child(uid).child(publicacion.id)
+                            refEliminar.removeValue()
+                                .addOnSuccessListener {
+                                    Toast.makeText(context, "Eliminado del carrito", Toast.LENGTH_SHORT).show()
+                                    val pos = holder.adapterPosition
+                                    if (pos != RecyclerView.NO_POSITION) {
+                                        publicaciones.removeAt(pos)
+                                        notifyItemRemoved(pos)
+                                    }
+                                }
+                                .addOnFailureListener {
+                                    Toast.makeText(context, "Error al eliminar", Toast.LENGTH_SHORT).show()
+                                }
+                        }
+                        .setNegativeButton("Cancelar", null)
+                        .show()
+                }
             }
         }
+
+
 
     }
 

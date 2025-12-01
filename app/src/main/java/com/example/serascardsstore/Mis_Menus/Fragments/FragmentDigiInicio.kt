@@ -50,12 +50,14 @@ class FragmentDigiInicio : Fragment() {
         adaptador = AdaptadorPublicacion(
             requireContext(),
             publicacionList,
-            true   // AQUÍ sí queremos mostrar botones
+            "INICIO",         // Tipo de fragmento: controla visibilidad de botones
+            nodoTCG ?: "digipublicaciones" // Nodo real en Firebase para eliminar
         ) { publicacion ->
-        val intent = Intent(requireContext(), DetallePublicacion::class.java)
+            val intent = Intent(requireContext(), DetallePublicacion::class.java)
             intent.putExtra("publicacion", publicacion)
             startActivity(intent)
         }
+
 
         binding.rvPublicaciones.adapter = adaptador
 
