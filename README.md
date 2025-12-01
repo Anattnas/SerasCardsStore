@@ -18,7 +18,7 @@ Permite iniciar sesión con:
 - Correo electrónico y contraseña
 - Cuenta de Google
 
-![Login](captura/login.PNG)
+![Login](capturas/login.PNG)
 
 ---
 
@@ -30,7 +30,7 @@ Desde este menú puedes ingresar a cualquier categoría:
 - Pokémon
 - Magic
 
-![MenuTCG](captura/MenuTCG.PNG)
+![MenuTCG](capturas/MenuTCG.PNG)
 
 ---
 
@@ -43,7 +43,7 @@ Desde aquí se pueden:
 - Agregar al carrito
 - Seleccionar para modificar o eliminar
 
-![FragmentInicio](captura/FragmentInicio.PNG)
+![FragmentInicio](capturas/FragmentInicio.PNG)
 
 ---
 
@@ -58,7 +58,7 @@ Permite crear una nueva publicación:
 - Hasta **3 imágenes**
 - Se guarda automáticamente en su nodo correspondiente en Firebase
 
-![FragmentVender](captura/FragmentVender.PNG)
+![FragmentVender](capturas/FragmentVender.PNG)
 
 ---
 
@@ -73,7 +73,7 @@ Incluye opciones para:
 - Editar datos
 - Cambiar foto de perfil
 
-![Perfil](captura/Perfil.PNG)
+![Perfil](capturas/Perfil.PNG)
 
 ---
 
@@ -82,7 +82,7 @@ Incluye opciones para:
 Muestra todas las publicaciones guardadas como favoritas.
 Se pueden eliminar individualmente.
 
-![Favoritos](captura/FragmentFavotitos.PNG)
+![Favoritos](capturas/FragmentFavotitos.PNG)
 
 ---
 
@@ -91,7 +91,7 @@ Se pueden eliminar individualmente.
 Muestra las publicaciones agregadas al carrito.
 Se pueden eliminar cuando el usuario desee.
 
-![Carrito](captura/FragmentCarrito.PNG)
+![Carrito](capturas/FragmentCarrito.PNG)
 
 ---
 
