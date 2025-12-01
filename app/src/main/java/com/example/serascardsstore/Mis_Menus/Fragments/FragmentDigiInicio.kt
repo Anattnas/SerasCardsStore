@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.serascardsstore.Adaptadores.AdaptadorPublicacion
 import com.example.serascardsstore.DetallePublicacion
@@ -63,6 +64,35 @@ class FragmentDigiInicio : Fragment() {
 
         // Cargar publicaciones desde Firebase
         cargarPublicaciones()
+
+        // BOTÓN MODIFICAR
+        binding.btnModificar.setOnClickListener {
+            val seleccionadas = adaptador.getPublicacionesSeleccionadas()
+
+            when {
+                seleccionadas.isEmpty() -> {
+                    Toast.makeText(requireContext(), "Debe seleccionar una publicación", Toast.LENGTH_SHORT).show()
+                }
+                seleccionadas.size > 1 -> {
+                    Toast.makeText(requireContext(), "Solo debe seleccionar una a la vez", Toast.LENGTH_SHORT).show()
+                }
+                else -> {
+                    Toast.makeText(requireContext(), "Correcto", Toast.LENGTH_SHORT).show()
+                    // A partir de aqui esta la lógica de modificación
+
+                    val fragmentModificar = FragmentModificar()
+                    val bundle = Bundle()
+                    bundle.putParcelable("publicacion", seleccionadas[0])
+                    fragmentModificar.arguments = bundle
+
+                    parentFragmentManager.beginTransaction()
+                        .replace(R.id.DigiFragmentContainer, fragmentModificar) // Asegúrate que tu Activity tenga un FrameLayout con id fragment_container
+                        .addToBackStack(null)
+                        .commit()
+                }
+            }
+        }
+
     }
 
     private fun cargarPublicaciones() {

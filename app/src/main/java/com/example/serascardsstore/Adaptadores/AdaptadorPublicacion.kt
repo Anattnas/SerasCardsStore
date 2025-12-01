@@ -27,6 +27,14 @@ class AdaptadorPublicacion(
     private val firebaseAuth = FirebaseAuth.getInstance()
     private val database = FirebaseDatabase.getInstance().reference
 
+    // Set para almacenar los IDs de publicaciones seleccionadas
+    private val publicacionesSeleccionadas = mutableSetOf<String>()
+
+    // Función pública para obtener las publicaciones seleccionadas
+    fun getPublicacionesSeleccionadas(): List<ModeloPublicacion> {
+        return publicaciones.filter { publicacionesSeleccionadas.contains(it.id) }
+    }
+
     private lateinit var binding: ItemPublicacionBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -111,11 +119,16 @@ class AdaptadorPublicacion(
         }
 
         // CHECK
+        binding.checkPublicacion.isChecked = publicacionesSeleccionadas.contains(publicacion.id)
+
         binding.checkPublicacion.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                Toast.makeText(context, "Check exitoso", Toast.LENGTH_SHORT).show()
+                publicacionesSeleccionadas.add(publicacion.id)
+            } else {
+                publicacionesSeleccionadas.remove(publicacion.id)
             }
         }
+
 
         // === CONFIGURAR VISIBILIDAD Y LISTENERS DE BOTONES SEGÚN FRAGMENTO ===
 
